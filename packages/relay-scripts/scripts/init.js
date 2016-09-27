@@ -30,6 +30,9 @@ module.exports = function(appPath, appName, verbose, originalDirectory) {
     'eject': ownPackageName + ' eject'
   };
 
+  // Set a graphql API proxy
+  appPackage.proxy = 'http://graphql-swapi.parseapp.com/';
+
   fs.writeFileSync(
     path.join(appPath, 'package.json'),
     JSON.stringify(appPackage, null, 2)
@@ -58,14 +61,15 @@ module.exports = function(appPath, appName, verbose, originalDirectory) {
     }
   });
 
-  // Run another npm install for react and react-dom
-  console.log('Installing react and react-dom from npm...');
+  // Run another npm install for react, react-dom and react-relay
+  console.log('Installing react, react-dom and react-relay from npm...');
   console.log();
   // TODO: having to do two npm installs is bad, can we avoid it?
   var args = [
     'install',
     'react',
     'react-dom',
+    'react-relay',
     '--save',
     verbose && '--verbose'
   ].filter(function(e) { return e; });

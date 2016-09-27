@@ -1,0 +1,14 @@
+{
+  "passPerPreset": true,
+  "plugins": [
+    "transform-runtime"
+  ],
+  "presets": [
+    {
+      "plugins": [
+        "./config/relay"
+      ]
+    },
+    "react-app"
+  ]
+}
